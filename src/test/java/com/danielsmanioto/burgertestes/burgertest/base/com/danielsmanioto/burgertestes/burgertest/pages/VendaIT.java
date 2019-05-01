@@ -12,8 +12,9 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class HomeIT extends BaseSelenium {
+public class VendaIT extends BaseSelenium {
 
+    private static final String URL = "http://localhost:83/index.html";
     private WebDriver driver = getDriver();
 
     private static final String X_BURGER = "1";
@@ -21,14 +22,14 @@ public class HomeIT extends BaseSelenium {
 
     @Test
     public void validaPaginaInicial() {
-        openInitialPage();
+        openPage(URL);
         Assert.assertEquals("Burger", driver.getTitle());
-        Assert.assertEquals("http://localhost:83/index.html", driver.getCurrentUrl());
+        Assert.assertEquals(URL, driver.getCurrentUrl());
     }
 
     @Test
     public void realizarUmPedidoSimplesDeUmHamgerSemAdicionais() {
-        openInitialPage();
+        openPage(URL);
         selecionarXBurger();
         finalizarClick();
         driver.switchTo().alert().accept();
@@ -38,7 +39,7 @@ public class HomeIT extends BaseSelenium {
 
     @Test
     public void realizarUmPedidoSimplesDeUmHamgerComAdicionais() {
-        openInitialPage();
+        openPage(URL);
         selecionarXBurger();
 
         selecionarIngredienteBacon();

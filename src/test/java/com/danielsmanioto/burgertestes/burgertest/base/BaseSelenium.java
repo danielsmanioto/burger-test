@@ -11,7 +11,6 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 public class BaseSelenium {
 
     private static WebDriver driver = null;
-    private static final String PAGE_INITIAL = "http://localhost:83/index.html";
 
     @BeforeClass
     public static void setup() {
@@ -48,20 +47,18 @@ public class BaseSelenium {
         return driver;
     }
 
-    public void sleep(long m) {
+    public void sleep(long millis) {
         try {
-            Thread.sleep(m);
+            Thread.sleep(millis);
         } catch (InterruptedException ignore) {}
     }
 
-    public void openInitialPage() {
-        driver.get(PAGE_INITIAL);
+    public void openPage(final String url) {
+        driver.get(url);
     }
 
     public static WebDriver getDriver() {
         return driver;
     }
-
-
 
 }
