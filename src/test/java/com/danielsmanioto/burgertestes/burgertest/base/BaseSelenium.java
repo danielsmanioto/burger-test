@@ -1,6 +1,8 @@
 package com.danielsmanioto.burgertestes.burgertest.base;
 
+import org.junit.After;
 import org.junit.AfterClass;
+import org.junit.Before;
 import org.junit.BeforeClass;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -16,11 +18,21 @@ public class BaseSelenium {
         if(driver == null) {
             driver = getDriver(Browser.Chrome);
         }
+        driver.manage().window().maximize();
+    }
+
+    @Before
+    public void beforeCase() {
+    }
+
+    @After
+    public void afterCase() {
+       //driver.close();
     }
 
     @AfterClass
     public static void finishCases() {
-        //driver.close();
+        driver.quit();
     }
 
     private static WebDriver getDriver(Browser browser) {
@@ -36,8 +48,20 @@ public class BaseSelenium {
         return driver;
     }
 
+    public void sleep(long m) {
+        try {
+            Thread.sleep(m);
+        } catch (InterruptedException ignore) {}
+    }
+
     public void openInitialPage() {
         driver.get(PAGE_INITIAL);
     }
+
+    public static WebDriver getDriver() {
+        return driver;
+    }
+
+
 
 }
