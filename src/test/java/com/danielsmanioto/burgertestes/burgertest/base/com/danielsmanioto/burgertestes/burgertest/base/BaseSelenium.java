@@ -1,12 +1,14 @@
-package com.danielsmanioto.burgertestes.burgertest.base;
+package com.danielsmanioto.burgertestes.burgertest.base.com.danielsmanioto.burgertestes.burgertest.base;
 
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.Select;
 
 public class BaseSelenium {
 
@@ -31,7 +33,7 @@ public class BaseSelenium {
 
     @AfterClass
     public static void finishCases() {
-        driver.quit();
+     //   driver.quit();
     }
 
     private static WebDriver getDriver(Browser browser) {
@@ -60,5 +62,26 @@ public class BaseSelenium {
     public static WebDriver getDriver() {
         return driver;
     }
+
+    public void selecionaSelectById(String id, String valor) {
+        new Select(driver.findElement(By.id(id))).selectByValue(valor);
+    }
+
+    public void informarValorPorId(String id, String valor) {
+        driver.findElement(By.id(id)).sendKeys(valor);
+    }
+
+    public void escolherOpcaoSim() {
+        driver.switchTo().alert().accept();
+    }
+
+    public void clicarEmOK() {
+        driver.switchTo().alert().accept();
+    }
+
+    public void clicarLink(String linkDescricao) {
+        driver.findElement(By.linkText(linkDescricao)).click();
+    }
+
 
 }
