@@ -67,7 +67,7 @@ public class VendaIT extends BaseSelenium {
     }
 
     @Test
-    public void realizarUmPedidoSimplesDeUmHamgerComAdicionais() {
+    public void realizarUmPedidoSimplesDeUmHamburgerComAdicionais() {
         openPage(URL);
 
         escolherLanche(X_BURGER);

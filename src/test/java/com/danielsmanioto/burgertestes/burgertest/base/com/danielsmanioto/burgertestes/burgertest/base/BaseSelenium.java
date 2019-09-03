@@ -33,7 +33,7 @@ public class BaseSelenium {
 
     @AfterClass
     public static void finishCases() {
-     //   driver.quit();
+        driver.quit();
     }
 
     private static WebDriver getDriver(Browser browser) {

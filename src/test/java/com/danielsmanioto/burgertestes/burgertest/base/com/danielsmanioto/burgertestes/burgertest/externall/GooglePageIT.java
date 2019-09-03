@@ -17,11 +17,13 @@ public class GooglePageIT extends BaseSelenium {
     private WebDriver driver = getDriver();
 
     @Test
-    public void pesquisarMeuNomeNOGoogle() {
+    public void pesquisarONomeDaMinhaGataNoGoogle() {
         openPage(PAGE);
 
-        driver.findElement(By.name("q")).sendKeys("DANIEL AUGUSTO SMANIOTO");
+        driver.findElement(By.name("q")).sendKeys("CAROLINE CALIXTO DE OLIVEIRA SMANIOTO");
         driver.findElement(By.name("q")).submit();
+        sleep(500);
+        driver.findElement(By.partialLinkText("Caroline Calixto de Oliveira Smanioto - QA Analyst")).click();
     }
 
 }
